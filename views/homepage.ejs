@@ -1,23 +1,32 @@
 <%- include('includes/head.ejs') %>
-</head>
-<body>
-    <%- include('includes/navigation.ejs')%>
-    <main>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>Products List</h1>
-                    <% if(products.length) {%>
-                        <% for(let product of products) {%>
-                            <h3><%= product.title %></h3>
-                            <% } %>
-                    <div></div>    
-                    <% } else{ %>
-                        <div>No products available</div>
-                        <% } %>
+    </head>
+
+    <body>
+        <%- include('includes/navigation.ejs')%>
+            <main>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                           <h1>Products List</h1>
+                           <% if(products.length){%>
+                            <div class="row">
+                                <% for(product of products) {%>
+                                    <div class="col-md-3">
+                                        <div class="product">
+                                            <div class="text-center">
+                                                <img src="<%= product.image%>" class="img-fluid"/>
+                                            </div>
+                                            <h3 class="text-center"><%=product.title%></h3>
+                                            <div class="text-center">Price: <strong>$<%= product.price %></strong></div>
+                                            <p class="text-center"><%=product.describtion%></p>
+                                        </div>
+                                    </div>
+                                <%}%>
+                            </div>
+                           <%}%>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-       
-    </main>
-    <%- include('includes/footer.ejs')%>
+
+            </main>
+            <%- include('includes/footer.ejs')%>
